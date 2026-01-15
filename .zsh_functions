@@ -1,0 +1,87 @@
+command_not_found_handler() {
+    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+    printf 'zsh: command not found: %s\n' "$1"
+    local entries=(
+        ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+    )
+    if (( ${#entries[@]} ))
+    then
+        printf "${bright}$1${reset} may be found in the following packages:\n"
+        local pkg
+        for entry in "${entries[@]}"
+        do
+            # (repo package version file)
+            local fields=(
+                ${(0)entry}
+            )
+            if [[ "$pkg" != "${fields[2]}" ]]
+            then
+                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+            fi
+            printf '    /%s\n' "${fields[4]}"
+            pkg="${fields[2]}"
+        done
+    fi
+    return 127
+}
+
+# cd and ls in one
+cl() {
+        local dir="$1"
+        local dir="${dir:=$HOME}"
+        if [[ -d "$dir" ]]; then
+                cd "$dir" >/dev/null; ll
+        else
+                echo "bash: cl: $dir: Directory not found"
+        fi
+}
+
+calc() {
+    echo "scale=3;$@" | bc -l
+}
+
+# List folders sorted by size, showing the largest first
+whatsize(){
+    du -h --max-depth=1 --exclude=/{proc,sys,dev,run} -t 1 ${1:-/} 2>/dev/null | sort -hr
+}
+
+ipif() {
+    if [[ -z $1 ]]; then
+        curl ipinfo.io/ip
+    elif grep -P "(([1-9]\d{0,2})\.){3}(?2)" <<< "$1"; then
+        curl ipinfo.io/"$1"
+    else
+        ipawk=($(host "$1" | awk '/address/ { print $NF }'))
+        curl ipinfo.io/${ipawk[1]}
+    fi
+    echo
+}
+
+# make backup + add initial absolute path at the end of the file
+mk_bak() {
+    if [[ $# -eq 1 ]]; then
+        file_ext=${1##*.}
+        common_ext='sh|txt|conf|bashrc|service|yaml|toml|hook'
+        case $file_ext in
+            $~common_ext)
+                comment_sign='#'
+                ;;
+            jsonc)
+                comment_sign='//'
+                ;;
+            lua)
+                comment_sign='--'
+                ;;
+            *)
+                comment_sign=''
+                ;;
+        esac
+        bak_file="$HOME/Bak/$(basename $1).bak"
+        cp "$1" "$bak_file"
+        if [[ -n $comment_sign ]]; then
+            echo -e "\n$comment_sign $(realpath $1)" >> "$bak_file"
+        fi
+    else
+        echo 'only one argument is supported'
+    fi
+}

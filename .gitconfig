@@ -1,0 +1,11 @@
+[pager]
+    branch = false
+[user]
+    name = Eugene Semerenko
+    email = eugene.semerenko@gmail.com
+[diff]
+    tool = meld
+[merge]
+    tool = meld
+[difftool]
+    prompt = false

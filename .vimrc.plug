@@ -1,0 +1,12 @@
+call plug#begin('~/.vim/plugged')
+
+"Fugitive Vim Github Wrapper
+"Plug 'tpope/vim-fugitive'
+Plug 'flazz/vim-colorschemes'
+Plug 'xolox/vim-colorscheme-switcher' "F8 key
+Plug 'xolox/vim-misc'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()

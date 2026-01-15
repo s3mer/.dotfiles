@@ -1,0 +1,48 @@
+## Modified commands
+alias diff='colordiff'              # requires colordiff package
+alias grep='grep --color=auto'
+alias pacman='pacman --color auto'
+alias more='less'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias nano='nano -w'
+alias ping='ping -c4'
+alias dmesg='dmesg -HL'
+alias ip='ip -color=auto'
+alias history='history 1' # display all entries from first to last entry
+
+# Replaced commands
+alias top='btop'
+alias vi='vim'
+
+## ls
+alias ls='ls --color=auto'
+alias ll='eza --icons -lg'
+alias llf='ll -f' # only files
+alias llD='ll -D' # only directories
+alias llt='ll -T' # tree view
+alias llx='ll --sort=extension'
+alias lls='ll --sort=size'
+alias lld='ll --sort=date'
+alias llg='ll --git --git-repos'
+
+## New commands
+alias dt='date "+%A, %B %d, %Y [%T]"'
+alias du1='du --max-depth=1'
+alias openports='ss --all --numeric --processes --ipv4 --ipv6'
+alias largest-files='sudo du -Sh 2> /dev/null | sort -rh | head -15'
+
+if [[ $EUID -ne 0 ]]; then
+    alias sudo='sudo -v; sudo '
+fi
+
+## Make Zsh error tolerant
+alias :q=' exit'
+alias :Q=' exit'
+alias :x=' exit'
+alias cd..='cd ..'
+
+
+alias arch-wiki='chromium /usr/share/doc/arch-wiki/html/en/ 2> /dev/null &'
+
