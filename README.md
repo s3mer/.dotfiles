@@ -1,12 +1,11 @@
-## Shell setup (Linux)
+## Shell setup
 
-![fish screenshot](./images/fish.png)
+![fastfetch screenshot](./screenshots/fastfetch.png)
 
-- [Fish shell](https://fishshell.com/)
-- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-- [Tide](https://github.com/IlanCosman/tide) - Shell theme.
+- [Zsh shell](https://www.zsh.org/)
+- [oh-my-posh](https://ohmyposh.dev/) - The most customizable and fastest prompt engine for any shell.
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts.
-- [Exa](https://the.exa.website/) - `ls` replacement
+- [Eza](https://github.com/eza-community/eza) - A modern, maintained replacement for ls, written in rust
 
 ## Sublime
 
@@ -14,7 +13,7 @@
 
 ## VIM
 
-![vim-airline screenshot](./images/vim-airline.png)
+![vim-airline screenshot](./screenshots/vim-airline.png)
 
 - [vim-plug](https://github.com/junegunn/vim-plug) - Minimalist Vim Plugin Manager
 
