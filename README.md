@@ -1,5 +1,5 @@
-![alacritty+eza screenshot](./screenshots/alacritty+eza.png)
 ![fastfetch+conky screenshot](./screenshots/fastfetch+conky.png)
+![alacritty+eza screenshot](./screenshots/alacritty+eza.png)
 
 ## WM
 
