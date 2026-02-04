@@ -7,6 +7,7 @@ export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
 xidlehook \
   `# Don't lock when there's a fullscreen application` \
   --not-when-fullscreen \
+  --not-when-audio \
   `# Dim the screen after 300 seconds (5 min), undim if user becomes active` \
   --timer 300 \
     "/usr/bin/light -S 10" \

@@ -8,6 +8,8 @@
 	"remember_open_files": true,
 	"ignored_packages":
 	[
+		"A File Icon",
+		"Package Control",
 		"Vintage",
 	],
 	"index_files": true,
